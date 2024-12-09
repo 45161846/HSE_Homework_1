@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">HSE_Homework_1</string>
+    <string name="app_name">HSE Homework 1</string>
+    <string name="mean_input_hint">Введите медиану (u)</string>
+    <string name="variance_input_hint">Введите разброс (o)</string>
+    <string name="random_number_button_description">Сгенерировать</string>
 </resources>
