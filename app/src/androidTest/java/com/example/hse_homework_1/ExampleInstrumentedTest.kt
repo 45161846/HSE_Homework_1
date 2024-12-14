@@ -22,3 +22,4 @@ class ExampleInstrumentedTest {
         assertEquals("com.example.hse_homework_1", appContext.packageName)
     }
 }
+
