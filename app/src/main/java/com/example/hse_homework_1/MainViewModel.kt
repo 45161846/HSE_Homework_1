@@ -20,7 +20,7 @@ class MainViewModel : ViewModel() {
 
         if (rawInput.isEmpty()) {
             _screen.value = ScreenState.ErrorInput(
-                median = DecimalFieldState.ErrorType("Заполните поле \"медиана\""),
+                median = DecimalFieldState.ErrorType("Заполните поле \"mu\""),
                 variance = prevState.variance,
                 result = "Некорректный ввод"
             )
@@ -55,7 +55,7 @@ class MainViewModel : ViewModel() {
         if (rawInput.isEmpty()) {
             _screen.value = ScreenState.ErrorInput(
                 median = prevState.median,
-                variance = DecimalFieldState.ErrorType("Заполните поле \"разброс\""),
+                variance = DecimalFieldState.ErrorType("Заполните поле \"sigma\""),
                 result = "Некорректный ввод"
             )
             return
