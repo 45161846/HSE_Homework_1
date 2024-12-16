@@ -42,7 +42,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation(libs.androidx.lifecycle)
+    androidTestImplementation (libs.kakao.test)
+    androidTestImplementation (libs.apache.collections)
+    implementation (libs.apache.math)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

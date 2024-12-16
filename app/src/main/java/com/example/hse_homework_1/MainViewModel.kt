@@ -8,9 +8,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlin.math.exp
-import kotlin.random.Random
-import kotlin.random.asJavaRandom
+import org.apache.commons.math3.distribution.LogNormalDistribution
 
 class MainViewModel : ViewModel() {
 
@@ -91,7 +89,7 @@ class MainViewModel : ViewModel() {
                 val med = (params.median as DecimalFieldState.DecimalValue).value
                 val vari = (params.variance as DecimalFieldState.DecimalValue).value
 
-                val result = viewModelScope.async{
+                val result = viewModelScope.async {
                     logRandom(med, vari)
                 }
 
@@ -112,11 +110,6 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private suspend fun logRandom(median: Double, variance: Double): Double {
-        val rng = Random.asJavaRandom()
-        val stdNormal = rng.nextGaussian()
-        val normalValue = exp(median + variance * stdNormal)
-
-        return normalValue
-    }
+    private suspend fun logRandom(sigma: Double, mu: Double): Double =
+        LogNormalDistribution(sigma, mu).sample()
 }
