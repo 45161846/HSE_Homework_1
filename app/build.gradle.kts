@@ -1,16 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
 }
 
 android {
     namespace = "com.example.hse_homework_1"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.hse_homework_1"
         minSdk = 27
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -35,6 +36,11 @@ android {
     }
 }
 
+ktlint {
+    android = true
+    ignoreFailures = false
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -43,9 +49,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle)
-    androidTestImplementation (libs.kakao.test)
-    androidTestImplementation (libs.apache.collections)
-    implementation (libs.apache.math)
+    androidTestImplementation(libs.kakao.test)
+    androidTestImplementation(libs.apache.collections)
+    implementation(libs.apache.math)
+    implementation("org.jlleitschuh.gradle:ktlint-gradle:7.1.0")
 
 
     testImplementation(libs.junit)

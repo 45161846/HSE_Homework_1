@@ -123,10 +123,10 @@ internal class InstrumentedTest {
             varianceView.clearText()
             meanView.typeText("$mean")
             varianceView.typeText("$variance")
-            for (i in 0..limit) {
+            (0..limit).forEach {
                 getNum.click()
                 resultNum.assert {
-                    DoubleComparison(mean, variance, this@InstrumentedTest)
+                    DoubleComparison(this@InstrumentedTest)
                 }
             }
             // check saving state after rotation
@@ -185,7 +185,6 @@ internal class InstrumentedTest {
     }
 
     companion object {
-        private const val THREAD_DELAY: Long = 10
         private const val MAX_TIMEOUT: Long = 500_000
 
         private var meanId = 0
@@ -196,15 +195,13 @@ internal class InstrumentedTest {
         @BeforeClass
         @JvmStatic
         fun enableAccessibilityChecks() {
-            IdlingPolicies.setMasterPolicyTimeout(5, TimeUnit.SECONDS);
-            IdlingPolicies.setIdlingResourceTimeout(5, TimeUnit.SECONDS);
+            IdlingPolicies.setMasterPolicyTimeout(5, TimeUnit.SECONDS)
+            IdlingPolicies.setIdlingResourceTimeout(5, TimeUnit.SECONDS)
         }
     }
 }
 
 internal class DoubleComparison(
-    private val mean: Double,
-    private val std: Double,
     private val testInstance: InstrumentedTest
 ) :
     ViewAssertion {
